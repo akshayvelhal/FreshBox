@@ -1,2 +1,0 @@
-# FreshBox
-FreshBox Desktop Application
