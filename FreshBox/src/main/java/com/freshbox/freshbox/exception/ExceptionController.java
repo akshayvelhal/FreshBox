@@ -18,13 +18,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @ControllerAdvice
 public class ExceptionController {
-    
-    
-    
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(CustomerNotFoundException.class)
+    @ResponseBody
+    ErrorInfo handleCustomerNotFoundException(HttpServletRequest req, Exception ex) {
+        return new ErrorInfo(req.getRequestURL(), ex);
+    }
+
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-        @ExceptionHandler(Exception.class)
-        @ResponseBody ErrorInfo handelAllError(HttpServletRequest req, Exception ex) {
-            return new ErrorInfo(req.getRequestURL(), ex);
-        }
-    
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    ErrorInfo handelAllError(HttpServletRequest req, Exception ex) {
+        return new ErrorInfo(req.getRequestURL(), ex);
+    }
+
 }

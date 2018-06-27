@@ -5,8 +5,8 @@
  */
 package com.freshbox.freshbox.controllers;
 
-import com.freshbox.freshbox.domain.User;
-import com.freshbox.freshbox.service.UserService;
+import com.freshbox.freshbox.domain.Customer;
+import com.freshbox.freshbox.exception.CustomerNotFoundException;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import com.freshbox.freshbox.service.CustomerService;
 
 /**
  *
@@ -23,21 +24,21 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/api")
-public class UserController {
+public class CustomerController {
     
     @Autowired
-    UserService userService;
+    CustomerService customerService;
  
-    @RequestMapping(value = "/user", method = RequestMethod.POST) 
+    @RequestMapping(value = "/customer", method = RequestMethod.POST) 
     @ResponseStatus(value = HttpStatus.CREATED)
-    public void createUser(HttpServletResponse response, @RequestBody User user){
-        userService.createUser(user);
+    public Customer createUser(HttpServletResponse response, @RequestBody Customer user){
+        return customerService.createUser(user);
     }
     
     
-    @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET) 
-    public User createUser(HttpServletResponse response, @PathVariable int userId){
-        return userService.getUser(userId);
+    @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.GET) 
+    public Customer getUser(HttpServletResponse response, @PathVariable long customerId) throws CustomerNotFoundException{
+        return customerService.getUser(customerId);
     }
     
     

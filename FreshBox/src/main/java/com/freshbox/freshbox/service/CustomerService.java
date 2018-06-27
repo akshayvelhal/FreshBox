@@ -5,14 +5,15 @@
  */
 package com.freshbox.freshbox.service;
 
-import com.freshbox.freshbox.domain.User;
+import com.freshbox.freshbox.domain.Customer;
+import com.freshbox.freshbox.exception.CustomerNotFoundException;
 
 /**
  *
  * @author Akshay Velhal
  */
-public interface UserService {
+public interface CustomerService {
     
-    public void createUser(User user);
-    public User getUser(int userId);
+    public Customer createUser(Customer user);
+    public Customer getUser(long userId) throws CustomerNotFoundException;
 }

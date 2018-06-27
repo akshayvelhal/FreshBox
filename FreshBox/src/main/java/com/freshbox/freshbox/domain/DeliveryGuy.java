@@ -22,10 +22,9 @@ import javax.persistence.Table;
 public class DeliveryGuy implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DeliveryGuyId")
     private Long deliveryGuyId;
-
     
     @Column(name = "Name", nullable=false)
     private String name;
@@ -44,6 +43,11 @@ public class DeliveryGuy implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "DeliveryGuy{" + "deliveryGuyId=" + deliveryGuyId + ", name=" + name + '}';
     }
     
 }

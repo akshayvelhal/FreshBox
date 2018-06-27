@@ -48,9 +48,6 @@ public class Application {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws ClassNotFoundException {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        System.err.println("--------------------------------------");
-        System.out.println("Executing somehting");
-        System.err.println("--------------------------------------");
         entityManagerFactoryBean.setDataSource(getDataSource());
         entityManagerFactoryBean.setPackagesToScan("com.freshbox.freshbox");
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);

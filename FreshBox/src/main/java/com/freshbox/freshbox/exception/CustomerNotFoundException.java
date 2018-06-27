@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.freshbox.freshbox.domain;
-
-import java.io.Serializable;
+package com.freshbox.freshbox.exception;
 
 /**
  *
  * @author Akshay Velhal
  */
-//@Entity
-public class User implements Serializable {
-    
-    
-    
-    
+public class CustomerNotFoundException extends Exception {
+
+    public CustomerNotFoundException(String message) {
+        super(message);
+    }
+
 }
